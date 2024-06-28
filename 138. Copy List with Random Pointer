@@ -1,0 +1,24 @@
+class Solution {
+    public Node copyRandomList(Node head) {
+        if(head==null){
+            return null;
+        }
+        HashMap <Node, Node> mp=new HashMap<>();
+        Node temp=head;
+        Node nhead=new Node(temp.val);
+        mp.put(temp,nhead);
+        while(temp.next!=null){
+            nhead.next=new Node(temp.next.val);
+            nhead=nhead.next;
+            temp=temp.next;
+            mp.put(temp,nhead);
+        }
+        temp=head;
+        while(temp!=null){
+            mp.get(temp).next=mp.get(temp.next);
+            mp.get(temp).random=mp.get(temp.random);
+            temp=temp.next;
+        }
+        return mp.get(head);
+    }
+}
