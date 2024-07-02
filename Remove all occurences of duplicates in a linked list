@@ -1,0 +1,30 @@
+class Solution {
+    public Node removeAllDuplicates(Node head) {
+        // code here
+        Node dummy = new Node(0);
+        dummy.next = head;
+        
+        // Pointers for previous and current nodes
+        Node prev = dummy;
+        
+        while (head != null) {
+            // If current node is a start of duplicates sublist
+            // Skip all the nodes until end of duplicates sublist
+            if (head.next != null && head.data == head.next.data) {
+                // Move until the end of duplicates sublist
+                while (head.next != null && head.data == head.next.data) {
+                    head = head.next;
+                }
+                // Skip all duplicates
+                prev.next = head.next;
+            } else {
+                // Move prev pointer
+                prev = prev.next;
+            }
+            // Move head pointer
+            head = head.next;
+        }
+        
+        return dummy.next;
+    }
+}
