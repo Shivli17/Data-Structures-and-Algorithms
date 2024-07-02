@@ -1,0 +1,21 @@
+class Solution {
+    public boolean compute(Node root) {
+        Node current=root;
+        String str="";
+        while(current!=null){
+            str=str+current.data;
+            current=current.next;
+        }
+        return StringPal(str);
+    }
+    public boolean StringPal(String s){
+        int j=s.length()-1;
+        for(int i=0; i<=j; i++){
+            if(s.charAt(i)!=s.charAt(j)){
+                return false;
+            }
+            j--;
+        }
+        return true;
+    }
+}
