@@ -1,0 +1,21 @@
+class Solution {
+    public List<Node> printAllDups(Node root) {
+        // code here
+        List<Node> result = new ArrayList<>();
+        Map<String, Integer> map = new HashMap<>();
+        serialize(root, map, result);
+        return result;
+    }
+
+    private String serialize(Node node, Map<String, Integer> map, List<Node> result) {
+        if (node == null) {
+            return "#";
+        }
+        String serialized = node.data + "," + serialize(node.left, map, result) + "," + serialize(node.right, map, result);
+        map.put(serialized, map.getOrDefault(serialized, 0) + 1);
+        if (map.get(serialized) == 2) {
+            result.add(node);
+        }
+        return serialized;
+    }
+}
