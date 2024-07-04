@@ -1,0 +1,20 @@
+class Solution {
+    // Function to find the vertical width of a Binary Tree.
+    void fillSet(Node root,Set<Integer> set,int hd)
+    {
+        if(root == null) return;
+        fillSet(root.left,set,hd - 1);
+        set.add(hd);
+        fillSet(root.right,set,hd + 1);
+    }
+ 
+ 
+    int verticalWidth(Node root)
+    {
+        Set<Integer> set = new HashSet<Integer>(); 
+         
+        // Third parameter is horizontal distance 
+        fillSet(root,set,0);
+        return set.size();
+    }
+}
