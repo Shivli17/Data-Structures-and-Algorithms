@@ -1,0 +1,23 @@
+class Solution {
+        private Node prev = null;
+
+    // Function to populate the next pointer for all nodes.
+    public void populateNext(Node root) {
+        if (root == null) {
+            return;
+        }
+
+        // Perform in-order traversal.
+        populateNext(root.left);
+
+        // If prev is not null, then set the next of prev to the current node.
+        if (prev != null) {
+            prev.next = root;
+        }
+
+        // Update prev to the current node.
+        prev = root;
+
+        populateNext(root.right);
+    }
+}
