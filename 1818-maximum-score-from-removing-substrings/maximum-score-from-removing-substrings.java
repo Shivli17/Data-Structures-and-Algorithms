@@ -16,7 +16,7 @@ class Solution {
     Stack<Character> stack2 = new Stack<>();
 
     // Remove "sub1" from s with point1 gain.
-    for (final char c : s.toCharArray())
+    for ( char c : s.toCharArray())
       if (!stack1.isEmpty() && stack1.peek() == sub1.charAt(0) && c == sub1.charAt(1)) {
         stack1.pop();
         points += point1;
