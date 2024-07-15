@@ -1,0 +1,31 @@
+Majority Element
+Difficulty: MediumAccuracy: 27.82%Submissions: 620K+Points: 4
+Given an array A of N elements. Find the majority element in the array. A majority element in an array A of size N is an element that appears strictly more than N/2 times in the array.
+
+class Solution
+{
+    static int majorityElement(int arr[], int size)
+    {
+        // your code here
+        int itemCount=0, j;
+        Arrays.sort(arr);
+        
+        for(int i=0; i<size; i++){
+            int a=arr[i];
+            for(j=i+1; j<size; j++){
+                if(a==arr[j]){
+                    itemCount++;
+                }
+                else if(a<arr[j]){
+                    break;
+                }
+            }
+            if(itemCount>=size/2){
+                return a;
+            }
+            itemCount=0;
+            i=j-1;
+        }
+        return -1;
+    }
+}
