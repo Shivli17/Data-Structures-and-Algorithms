@@ -3,8 +3,8 @@ class Solution {
 
         int[] verticalCut=new int[verticalCuts.length+2];
         int[] horizontalCut=new int[horizontalCuts.length+2];
-        newArr(horizontalCut, horizontalCuts);
-        newArr(verticalCut, verticalCuts);
+        System.arraycopy(horizontalCuts, 0, horizontalCut, 1, horizontalCuts.length);
+        System.arraycopy(verticalCuts, 0, verticalCut, 1, verticalCuts.length);
 
         verticalCut[verticalCut.length-1]=w;
         horizontalCut[horizontalCut.length-1]=h;
@@ -17,12 +17,6 @@ class Solution {
         return (int)((long)maxH * maxV % 1000000007);
     }
 
-    public void newArr(int[] n, int[] o){
-        for(int i=0; i<o.length; i++){
-            n[i]=o[i];
-        }
-        n[n.length-2]=0;
-    }
     public int MaxDiff(int[] arr){
         int max=0;
         for(int i=0; i<arr.length-1; i++){
