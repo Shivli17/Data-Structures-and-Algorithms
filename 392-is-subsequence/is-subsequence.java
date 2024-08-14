@@ -7,10 +7,10 @@ class Solution {
             return false;
         }
         int a=0,i=0;
-        boolean x=false;
+        //boolean x=false;
         for(i=0; i<t.length(); i++){
             if(t.charAt(i)==s.charAt(a)){
-                x=true;
+                //x=true;
                 a++;
                 if(a==s.length()){
                     return true;
