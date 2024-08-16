@@ -3,18 +3,15 @@ class Solution {
     List<Integer> getElementsOnlyInFirstList(int[] nums1, int[] nums2) {
         Set<Integer> onlyInNums1 = new HashSet<> (); 
         
+        // Store nums2 elements in an unordered set. 
+        Set<Integer> existsInNums2 = new HashSet<> (); 
+        for (int num : nums2) {
+            existsInNums2.add(num);
+        }
+        
         // Iterate over each element in the list nums1.
         for (int num : nums1) {
-            boolean existInNums2 = false;
-            // Check if num is present in the second arg nums2.
-            for (int x : nums2) {
-                if (x == num) {
-                    existInNums2 = true;
-                    break;
-                }
-            }
-            
-            if (!existInNums2) {
+            if (!existsInNums2.contains(num)) {
                 onlyInNums1.add(num);
             }
         }
